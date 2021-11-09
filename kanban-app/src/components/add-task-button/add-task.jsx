@@ -1,17 +1,25 @@
 import './style.css'
-// import NewTaskGenerator from '../new-task-generator/new-task-generator'
-// import { render } from '@testing-library/react'
+import React, { useState } from 'react';
+import NewTaskGenerator from '../new-task-generator/new-task-generator'
+
 
 function AddTaskButton() {
 
+    let [isClicked, setClick] = useState(false);
 
-    // function handleClick(){
+    function handleClick() {
+        if (isClicked === false) {
+            setClick(true)
+        }
+    }
 
-    // render(<NewTaskGenerator></NewTaskGenerator>)
-    // }
-    return (
-    <button className='add-task__button' /*onClick={handleClick}*/>+</button>
-)
+    return (<React.Fragment>
+        <button className='add-task__button' onClick={handleClick}>+</button>
+        {isClicked !== false ?
+                <NewTaskGenerator></NewTaskGenerator>
+            : null}
+    </React.Fragment>
+    )
 }
 
 export default AddTaskButton

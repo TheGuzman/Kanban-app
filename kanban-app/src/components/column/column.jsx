@@ -33,7 +33,6 @@ function Column() {
            <h3>{c.title}</h3>
            <AddTaskButton></AddTaskButton>
            </div>
-           <NewTaskGenerator></NewTaskGenerator>
             </div>)}
         </div>
     )
