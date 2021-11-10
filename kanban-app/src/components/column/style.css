@@ -17,10 +17,25 @@
 .column__header{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items:center;
     justify-content: space-between;
 }
 
 .column > *{
     margin: 0.8em;
+}
+
+.new__task__container{
+    width: 100%;
+}
+.clear-all__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.clear-all__button{
+    border:none;
+    background-color: inherit;
 }
