@@ -1,13 +1,27 @@
 
 
-function NewTaskGenerator(){
+function NewTaskGenerator(props) {
 
-    return(
+    let info = '';
+
+    function handleCancel() {
+        props.cancelButton(false)
+    }
+
+    function handleInput(e){
+        info = e.target.value;
+    }
+
+    function handleAdd(){
+        console.log(info)
+    }
+
+    return (
         <div className='new__task__container'>
-            <input type='text' placeholder='enter a task'></input>
+            <input onChange={handleInput} type='text' name='addTask' placeholder='enter a task'></input>
             <div>
-                <button>Add</button>
-                <button>Cancel</button>
+                <button onClick={handleAdd}>Add</button>
+                <button onClick={handleCancel}>Cancel</button>
             </div>
         </div>
     )
