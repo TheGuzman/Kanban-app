@@ -2,7 +2,7 @@ import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
 import NewTaskGenerator from '../new-task-generator/new-task-generator'
-
+import Card from '../card/card'
 
 function Column() {
 
@@ -34,6 +34,7 @@ function Column() {
            <AddTaskButton></AddTaskButton>
            </div>
            <NewTaskGenerator></NewTaskGenerator>
+           <Card></Card>
             </div>)}
         </div>
     )
