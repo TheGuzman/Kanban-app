@@ -1,7 +1,6 @@
 import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
-import NewTaskGenerator from '../new-task-generator/new-task-generator'
 import Card from '../card/card'
 import React from 'react'
 import ClearAllButton from '../clear-all-button/clear-all'
@@ -12,7 +11,7 @@ function Column() {
     const taskColumns = [
         {
             id: 1,
-            title: 'Todo',
+            title: 'To do',
             cards: []
         },
         {
@@ -37,7 +36,7 @@ function Column() {
                     <div className='column__header'>
                         <Counter></Counter>
                         <h3>{c.title}</h3>
-                        <AddTaskButton></AddTaskButton>
+                        <AddTaskButton title={c.title}></AddTaskButton>
                     </div>
                     <Card></Card>
                 </div>)}
