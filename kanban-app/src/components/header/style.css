@@ -1,0 +1,19 @@
+.img__container{
+    height: 3rem;
+    padding-left: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem; 
+    
+  
+}
+
+.header__container{
+    display: flex;
+    background-color: #24292e;
+    gap: 35%;
+}      
+.text__container{   
+
+    align-self: center;
+    color: white;
+}
