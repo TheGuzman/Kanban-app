@@ -38,8 +38,8 @@ function Column() {
                         <Counter></Counter>
                         <h3>{c.title}</h3>
                         <AddTaskButton></AddTaskButton>
-                        <Card></Card>
                     </div>
+                    <Card></Card>
                 </div>)}
                 {doneColumn.map(c => <div key={c.id} className={'column ' + c.title}>
                     <div className='column__header'>
@@ -49,8 +49,8 @@ function Column() {
                             <AddTaskButton></AddTaskButton>
                             <ClearAllButton></ClearAllButton>
                         </div>
-                        <Card></Card>
                     </div>
+                    <Card></Card>
                 </div>)}
             </div>
         </React.Fragment>
