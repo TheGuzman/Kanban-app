@@ -12,12 +12,10 @@ function Column() {
         {
             id: 1,
             title: 'To do',
-            cards: []
         },
         {
             id: 2,
             title: 'In progress',
-            cards: []
         }
     ]
 
@@ -25,14 +23,17 @@ function Column() {
         {
             id: 3,
             title: 'Done',
-            cards: []
         }
     ]
+
+
 
     return (
         <React.Fragment>
             <div className='columns__container'>
-                {taskColumns.map(c => <div key={c.id} className={'column ' + c.title}>
+
+                {taskColumns.map(c => 
+                <div key={c.id} className={'column ' + c.title}>
                     <div className='column__header'>
                         <Counter></Counter>
                         <h3>{c.title}</h3>
@@ -40,7 +41,9 @@ function Column() {
                     </div>
                     <Card></Card>
                 </div>)}
-                {doneColumn.map(c => <div key={c.id} className={'column ' + c.title}>
+
+                {doneColumn.map(c => 
+                <div key={c.id} className={'column ' + c.title}>
                     <div className='column__header'>
                         <Counter></Counter>
                         <h3>{c.title}</h3>
@@ -51,9 +54,11 @@ function Column() {
                     </div>
                     <Card></Card>
                 </div>)}
+                
             </div>
         </React.Fragment>
     )
 }
 
 export default Column
+
