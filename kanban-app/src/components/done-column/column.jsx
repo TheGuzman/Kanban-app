@@ -8,6 +8,7 @@ import ClearAllButton from '../clear-all-button/clear-all'
 
 function DoneColumn(props) {
 
+    let doneColumn=[]
 
     return (
         <div className={'column ' + props.title}>
