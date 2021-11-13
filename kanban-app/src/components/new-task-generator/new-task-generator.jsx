@@ -1,12 +1,18 @@
 import './style.css'
 
-let counter = 0;
-localStorage.setItem('counter', JSON.stringify(counter))
+    let counter = JSON.parse(localStorage.getItem('counter'));
+    localStorage.setItem('counter', JSON.stringify(counter))
 
 function NewTaskGenerator(props) {
 
+    if (counter !== null) {
+        counter = JSON.parse(localStorage.getItem('counter'));
+    }
+    else{
+        counter=0;
+    }
+
     let info = '';
-    let tasks = []; //Array de tareas 
 
     function handleCancel() {
         props.cancelButton(false)
@@ -27,7 +33,7 @@ function NewTaskGenerator(props) {
             document.querySelector('.new-task__add__button').classList.add('new-task__add__button__enabled')
             document.querySelector('.new-task__add__button').disabled = false;
         }
-        if (info.length <= 3 && document.querySelector('.new-task__add__button__enabled') !== NaN) {
+        if (info.length <= 3 && document.querySelector('.new-task__add__button__enabled') !== isNaN) {
             document.querySelector('.new-task__add__button').classList.remove('new-task__add__button__enabled')
             document.querySelector('.new-task__add__button').disabled = true;
         }
@@ -35,13 +41,14 @@ function NewTaskGenerator(props) {
 
     function handleAdd() {
         counter++;
-        tasks.push({
+        let newtasks = {
             task: info,
-            id: `${props.title}_${counter}`,
+            id: `#${counter}`,
             state: props.title,
             date: getTime(),
-        })
-        localStorage.setItem('task', JSON.stringify(tasks))
+        }
+        localStorage.setItem('counter', counter);
+        localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
     }
 
     return (
