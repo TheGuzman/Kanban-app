@@ -49,7 +49,10 @@ function NewTaskGenerator(props) {
         }
         localStorage.setItem('counter', counter);
         localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
+        window.location.reload();
+        return false;
     }
+
 
     return (
         <div className='new__task__container'>

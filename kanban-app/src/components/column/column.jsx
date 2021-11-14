@@ -15,9 +15,14 @@ function Column(props) {
         let counter = JSON.parse(localStorage.getItem('counter')); 
         for (let i = 1; i <=counter; i++) {
             let task = JSON.parse(localStorage.getItem(`task_${i}`))
+            if(task!==null){ //queremos pintar las tareas que coincidan con el contador (porque puede ser que haya tareas que se hayan borrado, pero el contador se matiene)
             allTasks.push(task)
+            }
+            else{
+                continue // al haber borrado una tarea el contador se mantiene y al intentar traer una tarea con dicho número nos da null, entonces queremos que el loop continue
+            }
+            }
         }
-    }
 
     getTasks();
 
@@ -29,8 +34,6 @@ function Column(props) {
               return  inProgressColumn.push(c)
         }
     })
-    console.log(toDoColumn)
-    console.log(inProgressColumn)
 
 
     return (
