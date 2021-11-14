@@ -49,3 +49,7 @@ align-items: center;
 justify-content: space-between;
 }
 
+.delete__button{
+  border:none;
+  background-color: inherit;
+}
