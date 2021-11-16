@@ -16,7 +16,7 @@ function AddTaskButton(props) {
     return (<React.Fragment>
         <button className='add-task__button' onClick={handleClick}>+</button>
         {isClicked !== false ?
-                <NewTaskGenerator onTaskAdd={props.onTaskAdd} title={props.title} cancelButton={onClickChange}></NewTaskGenerator>
+                <NewTaskGenerator onTaskAdd={props.onTaskAdd} state={props.state} title={props.title} cancelButton={onClickChange}></NewTaskGenerator>
             : null}
     </React.Fragment>
     )

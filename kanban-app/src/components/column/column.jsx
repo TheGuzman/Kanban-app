@@ -32,10 +32,10 @@ function Column(props) {
     getTasks();
 
     allTasks.map(c => { //Filtra todas las tareas y las pushea al array de tareas correspondiente
-        if (c.state === 'To do') {
+        if (c.state === 'Todo') {
           return  toDoColumn.push(c)
         }
-        if (c.state === 'In progress') {
+        if (c.state === 'Inprogress') {
               return  inProgressColumn.push(c)
         }
     })
@@ -52,7 +52,7 @@ function Column(props) {
             <div className='column__header'>
                 <Counter></Counter>
                 <h3>{props.title}</h3>
-                <AddTaskButton onTaskAdd={onTaskAdd} title={props.title}></AddTaskButton>
+                <AddTaskButton onTaskAdd={onTaskAdd} state={props.state} title={props.title}></AddTaskButton>
             </div>
 
             {/* TERNARIO QUE SEPARA LAS TAREAS EN LAS DOS COLUMNAS (Todo e inProgress) PARA MAPEAR */}

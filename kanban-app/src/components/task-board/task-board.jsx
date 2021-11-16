@@ -9,8 +9,8 @@ function TaskBoard() {
     return (
         <React.Fragment>
             <div className='columns__container'>
-            <Column title='To do'></Column>
-            <Column title='In progress'></Column>
+            <Column title='To do' state ="Todo"></Column>
+            <Column title='In progress' state ="Inprogress"></Column>
             <DoneColumn title='Done'></DoneColumn>
             </div>
         </React.Fragment>

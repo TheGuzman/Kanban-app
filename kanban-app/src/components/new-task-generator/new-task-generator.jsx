@@ -49,12 +49,12 @@ function NewTaskGenerator(props) {
         let newtasks = {
             task: info,
             id: `#${counter}`,
-            state: props.title,
+            state: props.state,
             date: getTime(),
         }
         localStorage.setItem('counter', counter);
         localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
-        props.onTaskAdd(true);
+        props.onTaskAdd(true);  
     }
 
 
