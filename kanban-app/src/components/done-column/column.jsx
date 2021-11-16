@@ -20,7 +20,7 @@ function DoneColumn(props) {
                     <ClearAllButton></ClearAllButton>
                 </div>
             </div>
-            <Card></Card>
+
         </div>
     )
 }
