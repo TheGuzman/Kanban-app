@@ -18,7 +18,7 @@ function Card(props){
     return(
         <div className="card__container">
         <div className='icons'>
-            <div className="icon__left"><p className="p__icon--left">x</p></div>
+            <div className="icon__left"><p className="p__icon--left">&#729;</p></div>
             <h1>{props.title}</h1>
             
             <div className="icon__right"><button onClick={handleDelete} className='delete__button'>🗑️</button></div>
