@@ -2,10 +2,15 @@ import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
 import Card from '../card/card'
-import React from 'react'
+import React, { useState } from 'react'
+
 
 
 function Column(props) {
+
+    let[newTask, newTaskisAdded] = useState(false)
+    let[removedTask, setremovedTask] = useState(false)
+
 
     let allTasks = []; //el array con todas las tareas traida del local storage
     let toDoColumn = [];
@@ -35,19 +40,25 @@ function Column(props) {
         }
     })
 
+    const onTaskAdd = ()=>{
+         newTask=== true ? newTaskisAdded(false) : newTaskisAdded(true);}
+
+    const onTaskRemove = ()=>{
+            removedTask=== true ? setremovedTask(false) : setremovedTask(true);}
+   
 
     return (
         <div className={'column ' + props.title}>
             <div className='column__header'>
                 <Counter></Counter>
                 <h3>{props.title}</h3>
-                <AddTaskButton title={props.title}></AddTaskButton>
+                <AddTaskButton onTaskAdd={onTaskAdd} title={props.title}></AddTaskButton>
             </div>
 
             {/* TERNARIO QUE SEPARA LAS TAREAS EN LAS DOS COLUMNAS (Todo e inProgress) PARA MAPEAR */}
             {props.title==='To do'?
-                toDoColumn.map((t, i)=> <Card title={t.task} timestamp={t.date} id={t.id} key={i}></Card>) 
-                :inProgressColumn.map((t, i)=> <Card title={t.task} timestamp={t.date} id={t.id} key={i}></Card>)
+                toDoColumn.map((t, i)=> <Card onTaskRemove={onTaskRemove} title={t.task} timestamp={t.date} id={t.id} key={i}></Card>) 
+                :inProgressColumn.map((t, i)=> <Card onTaskRemove={onTaskRemove} title={t.task} timestamp={t.date} id={t.id} key={i}></Card>)
                 }
                
         </div>

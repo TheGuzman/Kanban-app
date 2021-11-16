@@ -11,15 +11,14 @@ function Card(props){
         num = num.split('#')[1]
         console.log(num);
         localStorage.removeItem(`task_${num}`)
-        window.location.reload();
-        return false;
+        props.onTaskRemove(true)
     }
 
 
     return(
         <div className="card__container">
         <div className='icons'>
-            <div className="icon__left"><p className="p__icon--left"></p></div>
+            <div className="icon__left"><p className="p__icon--left">x</p></div>
             <h1>{props.title}</h1>
             
             <div className="icon__right"><button onClick={handleDelete} className='delete__button'>🗑️</button></div>

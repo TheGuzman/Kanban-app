@@ -39,6 +39,11 @@ function NewTaskGenerator(props) {
         }
     }
 
+    // function removeSpaceFromState(){ //quita los espacios vacios del título de las columnas para asignar una clase css
+    //     let state = props.state.replace(/\s/g, "");
+    //     return state
+    // } 
+
     function handleAdd() {
         counter++;
         let newtasks = {
@@ -49,8 +54,7 @@ function NewTaskGenerator(props) {
         }
         localStorage.setItem('counter', counter);
         localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
-        window.location.reload();
-        return false;
+        props.onTaskAdd(true);
     }
 
 
