@@ -6,7 +6,6 @@ function NewTaskGenerator(props) {
 
     let counter = props.counter;
     
-
     let info = '';
 
     function handleCancel() {
@@ -39,11 +38,12 @@ function NewTaskGenerator(props) {
         let newtask = {
             task: info,
             id: `#${counter}`,
-            state: props.state,
+            status: props.status,
             date: getTime(),
         }
+        console.log(newtask)
         props.closeTaskGenerator(false);//para cerrar tras añadir 
-        props.onTaskAdd(true);  
+        props.onTaskAdd(newtask);  
 
     }
 

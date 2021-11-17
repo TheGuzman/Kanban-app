@@ -1,6 +1,6 @@
 
 import './App.css';
-import TaskBoard from './components/task-board/task-board';
+import TaskBoard from './pages/task-board/task-board';
 import Header from './components/header';
 import SubHeader from './components/sub-header';
 
