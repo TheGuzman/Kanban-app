@@ -1,16 +1,11 @@
 import './style.css'
 
-    let counter = JSON.parse(localStorage.getItem('counter'));
-    localStorage.setItem('counter', JSON.stringify(counter))
+
 
 function NewTaskGenerator(props) {
 
-    if (counter !== null) {
-        counter = JSON.parse(localStorage.getItem('counter'));
-    }
-    else{
-        counter=0;
-    }
+    let counter = props.counter;
+    
 
     let info = '';
 
@@ -39,21 +34,14 @@ function NewTaskGenerator(props) {
         }
     }
 
-    // function removeSpaceFromState(){ //quita los espacios vacios del título de las columnas para asignar una clase css
-    //     let state = props.state.replace(/\s/g, "");
-    //     return state
-    // } 
-
     function handleAdd() {
         counter++;
-        let newtasks = {
+        let newtask = {
             task: info,
             id: `#${counter}`,
             state: props.state,
             date: getTime(),
         }
-        localStorage.setItem('counter', counter);
-        localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
         props.closeTaskGenerator(false);//para cerrar tras añadir 
         props.onTaskAdd(true);  
 
