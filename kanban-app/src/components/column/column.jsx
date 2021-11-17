@@ -2,34 +2,34 @@ import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
 import Card from '../card/card'
-import React, { useState } from 'react'
-
-
-
+import React from 'react'
 
 function Column(props) {
 
+    let counter = '';
+    let cardsToprint='';
 
-    switch(props.title){
-        case 'To do':
-        counter = props.counter;    
-        cardsToprint= props.tasks.map((t, i)=><Card onStateChange={onStateChange} onTaskRemove={onTaskRemove} title={t.task} state={t.state} timestamp={t.date} id={t.id} key={i}></Card>); 
-                    break;
 
-        case 'In progress':
-        counter = props.counter;  
-        cardsToprint= props.task.map((t, i)=> <Card onStateChange={onStateChange} onTaskRemove={onTaskRemove} title={t.task} state={t.state} timestamp={t.date} id={t.id} key={i}></Card>); 
-                    break;
+    // switch(props.title){
+    //     case 'To do':
+    //     counter = props.counter;    
+    //     cardsToprint= props.tasks.map((t, i)=><Card onTaskRemove={props.onTaskRemove} title={t.task} status={t.status} timestamp={t.date} id={t.id} key={i}></Card>); 
+    //                 break;
 
-        case 'Done': 
-        counter = props.counter; 
-        cardsToprint= props.task.map((t, i)=> <Card onTaskRemove={onTaskRemove} title={t.task} state={t.state} timestamp={t.date} id={t.id} key={i} doneClass='done'></Card>); 
-                    break;
-        default : 
-        taskNum=0;
-        cardsToprint=''; break;
+    //     case 'In progress':
+    //     counter = props.counter;  
+    //     cardsToprint= props.task.map((t, i)=> <Card onTaskRemove={props.onTaskRemove} title={t.task} status={t.status}  timestamp={t.date} id={t.id} key={i}></Card>); 
+    //                 break;
 
-    }
+    //     case 'Done': 
+    //     counter = props.counter; 
+    //     cardsToprint= props.task.map((t, i)=> <Card onTaskRemove={props.onTaskRemove} title={t.task} status={t.status}  timestamp={t.date} id={t.id} key={i} doneClass='done'></Card>); 
+    //                 break;
+    //     default : 
+    //     counter=0;
+    //     cardsToprint=''; break;
+
+    // }
 
 
     return (
@@ -37,10 +37,9 @@ function Column(props) {
             <div className='column__header'>
                 <Counter counter={counter}></Counter>
                 <h3>{props.title}</h3>
-                <AddTaskButton onTaskAdd={onTaskAdd} state={props.state} title={props.title}></AddTaskButton>
+                <AddTaskButton onTaskAdd={props.onTaskAdd} status={props.status} title={props.title}></AddTaskButton>
             </div>
             {cardsToprint}
-
         </div>
     )
 }
