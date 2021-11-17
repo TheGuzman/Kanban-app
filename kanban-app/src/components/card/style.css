@@ -10,16 +10,19 @@
 }
 
 .icon__left{
+  box-sizing: content-box;
   margin: 7px;
   border: 2px solid #22863a;
   border-radius: 50%;
-  height: 15px;
- width: 15px;
- display: flex;
- justify-content: center;
- align-items: center;
- align-self: center;
+  height: 0.7em;
+  width: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.icon__left.done{
+  border: 2px solid #cb2431;
 }
 
 .icon__right{
@@ -34,9 +37,12 @@ h1 {
 
 .p__icon--left {
   color: #22863a;
-  padding-top: 1.1rem;
-  font-size: 2.5em;
+  /* padding-top: 1.1rem; */
+  font-size: 1em;
   font-weight: 600;
+}
+.p__icon--left.done{
+  color:  #cb2431;
 }
 
 .p__card {
