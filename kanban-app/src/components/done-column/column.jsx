@@ -1,7 +1,6 @@
 import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
-import Card from '../card/card'
 import React from 'react'
 import ClearAllButton from '../clear-all-button/clear-all'
 

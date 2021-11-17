@@ -15,7 +15,7 @@ function NewTaskGenerator(props) {
     let info = '';
 
     function handleCancel() {
-        props.cancelButton(false)
+        props.closeTaskGenerator(false)
     }
 
     function handleInput(e) {
@@ -54,8 +54,11 @@ function NewTaskGenerator(props) {
         }
         localStorage.setItem('counter', counter);
         localStorage.setItem(`task_${counter}`, JSON.stringify(newtasks))
+        props.closeTaskGenerator(false);//para cerrar tras añadir 
         props.onTaskAdd(true);  
+
     }
+
 
 
     return (

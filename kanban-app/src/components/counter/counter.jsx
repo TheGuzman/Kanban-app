@@ -1,9 +1,8 @@
 import './style.css'
-function Counter(){
-
+function Counter(props){
 
     return(
-        <div className='counter__container'>cc</div>
+        <div className='counter__container'>{props.tasknum}</div>
     )
 }
 
