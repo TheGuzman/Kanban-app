@@ -21,8 +21,16 @@
   justify-content: center;
 }
 
-.icon__left.done{
+.icon__left__done{
+  box-sizing: content-box;
+  margin: 7px;
   border: 2px solid #cb2431;
+  border-radius: 50%;
+  height: 0.7em;
+  width: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon__right{
@@ -41,8 +49,10 @@ h1 {
   font-size: 1em;
   font-weight: 600;
 }
-.p__icon--left.done{
+.p__icon--left__done{
   color:  #cb2431;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .p__card {

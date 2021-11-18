@@ -1,15 +1,13 @@
 import './style.css'
 import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
-import Card from '../card/card'
 import React from 'react'
+import Card from '../card/card'
 
 function Column(props) {
 
-    let counter = '';
-    let cardsToprint='';
-
-
+    
+    
     // switch(props.title){
     //     case 'To do':
     //     counter = props.counter;    
@@ -35,11 +33,11 @@ function Column(props) {
     return (
         <div className={'column ' + props.title}>
             <div className='column__header'>
-                <Counter counter={counter}></Counter>
+                <Counter counter={props.counter}></Counter>
                 <h3>{props.title}</h3>
-                <AddTaskButton onTaskAdd={props.onTaskAdd} status={props.status} title={props.title}></AddTaskButton>
+                <AddTaskButton onTaskAdd={props.onTaskAdd} status={props.status} title={props.title} counter={props.counter}></AddTaskButton>
             </div>
-            {cardsToprint}
+           {props.tasks.map((t, i)=><Card onTaskRemove={props.onTaskRemove} title={t.task} status={t.status} counter={props.counter} timestamp={t.date} id={t.id} key={i} doneClass={props.doneClass}></Card>)}
         </div>
     )
 }
