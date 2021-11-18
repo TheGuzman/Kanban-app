@@ -4,7 +4,7 @@ import './style.css'
 
 function NewTaskGenerator(props) {
 
-
+let counter='';
     let info = '';
 
     function handleCancel() {
