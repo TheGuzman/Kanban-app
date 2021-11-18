@@ -4,76 +4,64 @@ import Column from '../../components/column/column'
 import { useState } from "react";
 
 
-function TaskBoard() {
 
-    let Todo='';
-    let Pending='';
-    let Done='';
+function TaskBoard() {
 
     let arrTaskTodo = [];
     let arrTaskPending = [];
     let arrTaskDone = [];
 
+    let counter = 0;
 
     const arrColumns = [
-        Todo = {
+        {
             title: 'To do',
             status: 'Todo',
             counter: arrTaskTodo.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskTodo,
+            doneClass:false,
         },
-        Pending = {
+        {
             title: 'Pending',
             status: 'Pending',
             counter: arrTaskPending.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskPending,
+            doneClass:false,
         },
-        Done = {
+        {
             title: 'Done',
             status: 'Done',
             counter: arrTaskDone.length,
             clearAll: true,
             AddButton: true,
             tasks: arrTaskDone,
+            doneClass:true,
         },
     ]
 
 
 
-  
 
 
 
 
-    let [newTask, newTaskisAdded] = useState(false)
+
+    let [arr, updateArr] = useState(arrColumns)
     // let [removedTask, setremovedTask] = useState(false)
     // let [stateChange, setStateChange] = useState([])
 
 
 
     const onTaskAdd = newtask => {
-
-        switch(newtask.status){
-        case 'Todo': 
-            arrTaskTodo.push(newtask)
-            console.log(arrColumns[0].tasks); break;
-
-        case 'Pending': 
-            arrTaskPending.push(newtask)
-            console.log(arrTaskPending); break;
-
-        case 'Done': 
-            arrTaskDone.push(newtask)
-            console.log(arrTaskDone); break;
+        const column = arr.find(c => c.status === newtask.status);
+        column.tasks.push(newtask);
+        counter++;
+        updateArr([...arr]);
     }
-    }
-
-    
-
 
     // const onTaskRemove = () => {
     //     removedTask === true ? setremovedTask(false) : setremovedTask(true);
@@ -87,7 +75,7 @@ function TaskBoard() {
 
     return (
         <div className='columns__container'>
-            {arrColumns.map((e,i) => <Column key={i} title={e.title} status={e.status} counter={e.counter} clearAll={e.clearAll} AddButton={e.AddButton} tasks={e.tasks} onTaskAdd={onTaskAdd}></Column>)}
+            {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} counter={e.counter} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} AddButton={e.AddButton} onTaskAdd={onTaskAdd}></Column>)}
         </div>
     )
 }

@@ -4,8 +4,7 @@ import './style.css'
 
 function NewTaskGenerator(props) {
 
-    let counter = props.counter;
-    
+
     let info = '';
 
     function handleCancel() {
@@ -41,7 +40,6 @@ function NewTaskGenerator(props) {
             status: props.status,
             date: getTime(),
         }
-        console.log(newtask)
         props.closeTaskGenerator(false);//para cerrar tras añadir 
         props.onTaskAdd(newtask);  
 

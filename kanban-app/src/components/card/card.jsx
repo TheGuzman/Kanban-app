@@ -4,15 +4,16 @@ import "./style.css";
 
 function Card(props) {
 
-    function handleDelete() {
-        props.onTaskRemove(true)
+    function handleDelete(e) {
+        let selectedCard= e;
+        console.log(selectedCard)
+        // props.onTaskRemove(selectedCard)
     }
 
     return (
-        
         <div className="card__container">
             <div className='icons'>
-                <div className={`icon__left ` + `${props.doneClass}`}><p className={`p__icon--left ` + `${props.doneClass}`}>•</p></div>
+                <div className={props.doneClass===true?'icon__left__done':'icon__left'}><p className={props.doneClass===true?'p__icon--left__done':'p__icon--left'}>•</p></div>
                 <h1>{props.title}</h1>
 
                 <div className='icon__right'><button onClick={handleDelete} className='delete__button'>🗑️</button></div>
