@@ -33,11 +33,11 @@ function Column(props) {
     return (
         <div className={'column ' + props.title}>
             <div className='column__header'>
-                <Counter counter={props.counter}></Counter>
+                <Counter taskNum={props.taskNum}></Counter>
                 <h3>{props.title}</h3>
                 <AddTaskButton onTaskAdd={props.onTaskAdd} status={props.status} title={props.title} counter={props.counter}></AddTaskButton>
             </div>
-           {props.tasks.map((t, i)=><Card onTaskRemove={props.onTaskRemove} title={t.task} status={t.status} counter={props.counter} timestamp={t.date} id={t.id} key={i} doneClass={props.doneClass}></Card>)}
+           {props.tasks.map((t, i)=><Card onTaskRemove={props.onTaskRemove} onStateChange={props.onStateChange} title={t.task} status={t.status} timestamp={t.date} id={t.id} key={i} doneClass={props.doneClass}></Card>)}
         </div>
     )
 }

@@ -4,7 +4,8 @@ import './style.css'
 
 function NewTaskGenerator(props) {
 
-let counter='';
+    let counter = props.counter
+
     let info = '';
 
     function handleCancel() {
@@ -33,10 +34,9 @@ let counter='';
     }
 
     function handleAdd() {
-        counter++;
         let newtask = {
             task: info,
-            id: `#${counter}`,
+            id: `#${counter+1}`,
             status: props.status,
             date: getTime(),
         }

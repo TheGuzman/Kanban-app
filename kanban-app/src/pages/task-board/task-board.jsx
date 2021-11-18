@@ -11,13 +11,11 @@ function TaskBoard() {
     let arrTaskPending = [];
     let arrTaskDone = [];
 
-    let counter = 0;
-
     const arrColumns = [
         {
             title: 'To do',
             status: 'Todo',
-            counter: arrTaskTodo.length,
+            taskNum: arrTaskTodo.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskTodo,
@@ -26,7 +24,7 @@ function TaskBoard() {
         {
             title: 'Pending',
             status: 'Pending',
-            counter: arrTaskPending.length,
+            taskNum: arrTaskPending.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskPending,
@@ -35,7 +33,7 @@ function TaskBoard() {
         {
             title: 'Done',
             status: 'Done',
-            counter: arrTaskDone.length,
+            taskNum: arrTaskDone.length,
             clearAll: true,
             AddButton: true,
             tasks: arrTaskDone,
@@ -45,37 +43,37 @@ function TaskBoard() {
 
 
 
-
-
-
-
-
     let [arr, updateArr] = useState(arrColumns)
-    // let [removedTask, setremovedTask] = useState(false)
+    let [counter, updateCounter] = useState(0)
     // let [stateChange, setStateChange] = useState([])
+
 
 
 
     const onTaskAdd = newtask => {
         const column = arr.find(c => c.status === newtask.status);
         column.tasks.push(newtask);
-        counter++;
-        updateArr([...arr]);
+        column.taskNum++;
+        updateArr([...arr]); //update del board
+        updateCounter(counter=>counter+1);
+        console.log(newtask)
+       
     }
 
-    // const onTaskRemove = () => {
-    //     removedTask === true ? setremovedTask(false) : setremovedTask(true);
-    // }
+    const onTaskRemove = selectedCard => {
+        const column = arr.find(c => c.status  === selectedCard.status);
+        const card = column.tasks.find(c => c.id  === selectedCard.id);
+        const i = column.tasks.indexOf(card);
+        column.tasks.splice(i,1);
+        updateArr([...arr])
+        column.taskNum--;
+    }
 
-    // const onStateChange = selectedTask => {
-    //     stateChange.push(selectedTask);
-    //     cloneAllTasks = [...stateChange]
-    //     console.log(cloneAllTasks);
-    // }
+
 
     return (
         <div className='columns__container'>
-            {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} counter={e.counter} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} AddButton={e.AddButton} onTaskAdd={onTaskAdd}></Column>)}
+            {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.taskNum} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove}></Column>)}
         </div>
     )
 }
