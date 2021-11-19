@@ -34,7 +34,9 @@ border: 1.5px solid rgba(27,31,35,0.15);
     color:white;
 }
 
-
+.new-task__add__button__enabled:hover{
+    cursor:pointer;
+}
 .new-task__cancel__button{
     margin: 0.5em 0em 0em 0em;
     background-color: #fafbfc;
@@ -43,4 +45,8 @@ border: 1.5px solid rgba(27,31,35,0.15);
     width: 49%;
     height: 2.5em;
     font-weight: 600;
+}
+
+.new-task__cancel__button:hover{
+    cursor:pointer;
 }

@@ -1,28 +1,17 @@
 import './style.css'
-import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
 import React from 'react'
 import ClearAllButton from '../clear-all-button/clear-all'
 
 
-function DoneColumn(props) {
+function DoneHeader(props) {
 
-    let doneColumn=[]
-
-    return (
-        <div className={'column ' + props.title}>
-            <div className='column__header'>
-                <Counter></Counter>
-                <h3>{props.title}</h3>
-                <div className='clear-all__container'>
-                    <AddTaskButton></AddTaskButton>
-                    <ClearAllButton></ClearAllButton>
-                </div>
-            </div>
-
-        </div>
+    return (<React.Fragment>
+        <AddTaskButton></AddTaskButton>
+        <ClearAllButton></ClearAllButton>
+    </React.Fragment>
     )
 }
 
-export default DoneColumn
+export default DoneHeader
 

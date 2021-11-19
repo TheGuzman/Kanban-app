@@ -4,3 +4,13 @@
     margin-right: 0.5em;
     font-size: 1.5em;
 }
+.done-add__task__button{
+    margin-right:4em;
+    border: none;
+    background-color: inherit;
+    font-size: 1.5em;
+}
+
+.add-task__button:hover{
+    cursor: pointer;
+}

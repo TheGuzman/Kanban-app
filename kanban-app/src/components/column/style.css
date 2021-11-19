@@ -16,10 +16,14 @@
     flex-wrap: wrap;
     align-items:center;
     justify-content: space-between;
+    margin: 0.8em;
 }
 
-.column > *{
-    margin: 0.8em;
+.info__header{
+    display: flex;
+}
+.column__title{
+    margin-left: 0.5em;
 }
 
 .new__task__container{
