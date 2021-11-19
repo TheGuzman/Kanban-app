@@ -7,71 +7,53 @@
 .card__container{
    border: 1.5px solid rgba(27,31,35,0.15);
    border-radius: 7px;
+   margin:0.5em;
 }
 
-.icon__left{
-  box-sizing: content-box;
-  margin: 7px;
-  border: 2px solid #22863a;
-  border-radius: 50%;
-  height: 0.7em;
-  width: 0.7em;
+.icons{
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  }
+
+.task__state__title__container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.icon__left__done{
-  box-sizing: content-box;
-  margin: 7px;
-  border: 2px solid #cb2431;
-  border-radius: 50%;
-  height: 0.7em;
-  width: 0.7em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.task__state{
+  margin: 7px
+} 
 
 .icon__right{
   margin: 7px;
 }
 
-h1 {
-  margin-top: 3px;
-  font-size: 15px;
+.task__title {
+  font-size: 0.8rem;
   color: #0366d6;
 }
 
-.p__icon--left {
-  color: #22863a;
-  /* padding-top: 1.1rem; */
-  font-size: 1em;
-  font-weight: 600;
-}
-.p__icon--left__done{
-  color:  #cb2431;
-  font-size: 1em;
-  font-weight: 600;
+.task__title:hover{
+  cursor: pointer;
 }
 
 .p__card {
   color: #24292e;
   white-space: pre-line;
   font-size: 10px;
-  text-align: center;
-  margin-bottom: 9px;
+ margin-left: 3em;
+  margin-bottom: 0.5em;
 
-}
-
-.icons{
-   display:flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
 }
 
 .delete__button{
   border:none;
   background-color: inherit;
+}
+
+.delete__button:hover{
+  cursor: pointer;
 }

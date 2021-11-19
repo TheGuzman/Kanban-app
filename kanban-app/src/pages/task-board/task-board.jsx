@@ -1,4 +1,5 @@
 import React from "react"
+import SubHeader from "../../components/sub-header";
 import './style.css'
 import Column from '../../components/column/column'
 import { useState } from "react";
@@ -15,29 +16,26 @@ function TaskBoard() {
         {
             title: 'To do',
             status: 'Todo',
-            taskNum: arrTaskTodo.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskTodo,
-            doneClass:false,
+            doneClass: false,
         },
         {
             title: 'Pending',
             status: 'Pending',
-            taskNum: arrTaskPending.length,
             clearAll: false,
             AddButton: true,
             tasks: arrTaskPending,
-            doneClass:false,
+            doneClass: false,
         },
         {
             title: 'Done',
             status: 'Done',
-            taskNum: arrTaskDone.length,
             clearAll: true,
             AddButton: true,
             tasks: arrTaskDone,
-            doneClass:true,
+            doneClass: true,
         },
     ]
 
@@ -48,33 +46,61 @@ function TaskBoard() {
     // let [stateChange, setStateChange] = useState([])
 
 
+    function deleteTask(obj){
+        const column = arr.find(c => c.status === obj.status);
+        const card = column.tasks.find(c => c.id === obj.id);
+        const i = column.tasks.indexOf(card);
+        column.tasks.splice(i,1);
+    }
+
+    function deleteAllTasks(array){
+        array.forEach(e=> array.splice(e))
+        updateArr([...arr]);
+    }
+
 
 
     const onTaskAdd = newtask => {
         const column = arr.find(c => c.status === newtask.status);
         column.tasks.push(newtask);
-        column.taskNum++;
         updateArr([...arr]); //update del board
-        updateCounter(counter=>counter+1);
-        console.log(newtask)
-       
+        updateCounter(counter => counter + 1);
+
     }
 
     const onTaskRemove = selectedCard => {
-        const column = arr.find(c => c.status  === selectedCard.status);
-        const card = column.tasks.find(c => c.id  === selectedCard.id);
-        const i = column.tasks.indexOf(card);
-        column.tasks.splice(i,1);
+        deleteTask(selectedCard)
         updateArr([...arr])
-        column.taskNum--;
+
+    }
+    
+    const onTaskChange = updateCard =>{
+        if(updateCard.status==='Todo'){
+            let newTask = Object.assign({},updateCard);
+            newTask.status='Pending';
+            arr[1].tasks.push(newTask); //push al array del Pending
+            deleteTask(updateCard)
+            updateArr([...arr]);
+        }
+        else if (updateCard.status==='Pending'){
+            let newTask = Object.assign({},updateCard);
+            newTask.status='Done';
+            arr[2].tasks.push(newTask); //push al array del Done
+            deleteTask(updateCard)
+            updateArr([...arr]);
+        }
     }
 
+    const onClearAll = clearDoneTasks=> deleteAllTasks(clearDoneTasks)
 
 
     return (
-        <div className='columns__container'>
-            {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.taskNum} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove}></Column>)}
-        </div>
+        <React.Fragment>
+            <SubHeader></SubHeader>
+            <div className='columns__container'>
+                {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.tasks.length} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove} onTaskChange={onTaskChange} onClearAll={onClearAll}></Column>)}
+            </div>
+        </React.Fragment>
     )
 }
 
