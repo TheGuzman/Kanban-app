@@ -1,6 +1,5 @@
 import './style.css'
 import React from 'react';
-import NewTaskGenerator from '../new-task-generator/new-task-generator'
 import ClearAllButton from '../clear-all-button/clear-all';
 
 

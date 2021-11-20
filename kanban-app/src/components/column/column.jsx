@@ -3,9 +3,9 @@ import Counter from '../counter/counter'
 import AddTaskButton from '../add-task-button/add-task'
 import React from 'react'
 import Card from '../card/card'
-import ClearAllButton from '../clear-all-button/clear-all'
 import { useState } from 'react'
 import NewTaskGenerator from '../new-task-generator/new-task-generator'
+
 
 function Column(props) {
 
@@ -24,7 +24,7 @@ function Column(props) {
                 <NewTaskGenerator onTaskAdd={props.onTaskAdd} status={props.status} counter={props.counter} title={props.title} onShowTaskGenerator={onShowTaskGenerator}></NewTaskGenerator>
             : null}
             </div>
-            {props.tasks.map((t, i) => <Card onTaskRemove={props.onTaskRemove} onStateChange={props.onStateChange} title={t.task} status={t.status} timestamp={t.date} id={t.id} key={i} doneClass={props.doneClass} onTaskChange={props.onTaskChange}></Card>)}
+            {props.tasks.map((t, i) => <Card onTaskRemove={props.onTaskRemove} onTaskChangeForward={props.onTaskChangeForward} onTaskChangeBackwards={props.onTaskChangeBackwards} title={t.task} status={t.status} timestamp={t.date} id={t.id} key={i} doneClass={props.doneClass} onTaskChange={props.onTaskChange}></Card>)}
         </div>
     )
 }
