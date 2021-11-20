@@ -11,7 +11,7 @@ function SubHeader(){
     return <div className ="wrapper__container">
                 <div className="subHeader__container">
                     <p className="text__container-version">Version 1.0</p>
-                    <p> Updated on {actualDate.getDate() } { monthNames[actualMonth]}</p>
+                    <p className="text__container-update"> Updated on {actualDate.getDate() } { monthNames[actualMonth]}</p>
                  </div>     
                  <TaskFilter></TaskFilter>
              </div>

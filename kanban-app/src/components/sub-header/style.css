@@ -1,17 +1,24 @@
 .text__container-version{
     font-weight: bold;
 }
+
+.text__container-update{
+    font-size: 0.8em;
+}
 .subHeader__container{
     padding-left: 1.5rem;
     margin-top: 1rem;
+}
+.subHeader__container > *{
+    margin:0.5em 0em
 }
 
 .wrapper__container{
     display: flex;
     flex-wrap: wrap;
-    gap: 55%;
-}
+    justify-content: space-between;
 
+}
 
 
 

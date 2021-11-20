@@ -22,7 +22,7 @@ function TaskBoard() {
             doneClass: false,
         },
         {
-            title: 'Pending',
+            title: 'In progress',
             status: 'Pending',
             clearAll: false,
             AddButton: true,
@@ -74,7 +74,7 @@ function TaskBoard() {
 
     }
     
-    const onTaskChange = updateCard =>{
+    const onTaskChangeForward = updateCard =>{
         if(updateCard.status==='Todo'){
             let newTask = Object.assign({},updateCard);
             newTask.status='Pending';
@@ -93,12 +93,30 @@ function TaskBoard() {
 
     const onClearAll = clearDoneTasks=> deleteAllTasks(clearDoneTasks)
 
+    const onTaskChangeBackwards = updateCard =>{
+        if(updateCard.status==='Pending'){
+            let newTask = Object.assign({},updateCard);
+            newTask.status='Todo';
+            arr[0].tasks.push(newTask); //push al array del Todo
+            deleteTask(updateCard)
+            updateArr([...arr]);
+        }
+        else if (updateCard.status==='Done'){
+            let newTask = Object.assign({},updateCard);
+            newTask.status='Pending';
+            arr[1].tasks.push(newTask); //push al array del Pending
+            deleteTask(updateCard)
+            updateArr([...arr]);
+        }
+    }
+
+
 
     return (
         <React.Fragment>
             <SubHeader></SubHeader>
             <div className='columns__container'>
-                {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.tasks.length} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove} onTaskChange={onTaskChange} onClearAll={onClearAll}></Column>)}
+                {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.tasks.length} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove} onTaskChangeForward={onTaskChangeForward} onTaskChangeBackwards={onTaskChangeBackwards} onClearAll={onClearAll}></Column>)}
             </div>
         </React.Fragment>
     )
