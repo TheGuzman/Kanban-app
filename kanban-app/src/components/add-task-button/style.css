@@ -3,14 +3,22 @@
     background-color: inherit;
     margin-right: 0.5em;
     font-size: 1.5em;
+    color:#4d4b4b;
 }
 .done-add__task__button{
-    margin-right:4em;
+    margin-right:1em;
     border: none;
     background-color: inherit;
     font-size: 1.5em;
+    color:#4d4b4b;
 }
 
-.add-task__button:hover{
+.add-task__button:hover, .done-add__task__button:hover{
     cursor: pointer;
+}
+
+.header__buttons__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }

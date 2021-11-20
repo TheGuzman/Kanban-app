@@ -22,7 +22,7 @@ function TaskBoard() {
             doneClass: false,
         },
         {
-            title: 'Pending',
+            title: 'In progress',
             status: 'Pending',
             clearAll: false,
             AddButton: true,

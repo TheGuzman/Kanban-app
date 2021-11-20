@@ -9,7 +9,7 @@ function NewTaskGenerator(props) {
     let info = '';
 
     function handleCancel() {
-        props.closeTaskGenerator(false)
+        props.onShowTaskGenerator(false)
     }
 
     function handleInput(e) {
@@ -40,7 +40,7 @@ function NewTaskGenerator(props) {
             status: props.status,
             date: getTime(),
         }
-        props.closeTaskGenerator(false);//para cerrar tras añadir 
+        props.onShowTaskGenerator(false);//para cerrar tras añadir 
         props.onTaskAdd(newtask);  
 
     }

@@ -1,25 +1,24 @@
 import './style.css'
-import React, { useState } from 'react';
+import React from 'react';
 import NewTaskGenerator from '../new-task-generator/new-task-generator'
+import ClearAllButton from '../clear-all-button/clear-all';
 
 
 function AddTaskButton(props) {
 
-    let [isClicked, setClick] = useState(false);
-    const onClickChange = state => setClick(state)
 
 
     function handleClick() {
-            setClick(true)
+            props.onShowTaskGenerator(true)
     }
 
 
-    return (<React.Fragment>
+    return (
+    <div className='header__buttons__container'>
         <button className={props.doneClass === true ? 'done-add__task__button':'add-task__button'} onClick={handleClick}>+</button>
-        {isClicked !== false ?
-                <NewTaskGenerator onTaskAdd={props.onTaskAdd} status={props.status} counter={props.counter} title={props.title} closeTaskGenerator={onClickChange}></NewTaskGenerator>
-            : null}
-    </React.Fragment>
+        {props.doneClass === true ?
+            <ClearAllButton onClearAll={props.onClearAll} title={props.title} tasks={props.tasks} className='clear-all__button'></ClearAllButton> : null}
+    </div>
     )
 }
 
