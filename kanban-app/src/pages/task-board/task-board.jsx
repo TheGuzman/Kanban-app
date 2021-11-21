@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import SubHeader from "../../components/sub-header";
 import './style.css'
 import Column from '../../components/column/column'
@@ -11,6 +11,16 @@ function TaskBoard() {
     let arrTaskTodo = [];
     let arrTaskPending = [];
     let arrTaskDone = [];
+
+    useEffect(()=>{
+
+        const storageData = JSON.parse(localStorage.getItem('allData'));
+        updateArr(storageData)
+       
+
+    }, [])
+    
+    
 
     const arrColumns = [
         {
@@ -63,14 +73,34 @@ function TaskBoard() {
     const onTaskAdd = newtask => {
         const column = arr.find(c => c.status === newtask.status);
         column.tasks.push(newtask);
+        
         updateArr([...arr]); //update del board
         updateCounter(counter => counter + 1);
+        console.log(arr[0].tasks)
+        localStorage.setItem('allData', JSON.stringify(arr));
+        if(newtask.status === 'Todo'){
+            localStorage.setItem('todoData', JSON.stringify(arr[0]))
+        }
+        if(newtask.status === 'Pending'){
+            localStorage.setItem('pendingData', JSON.stringify(arr[1]))
+        }
+        if(newtask.status === 'Done'){
+            localStorage.setItem('doneData', JSON.stringify(arr[2]))
+        }
+        
 
     }
 
     const onTaskRemove = selectedCard => {
         deleteTask(selectedCard)
         updateArr([...arr])
+        if(selectedCard.status === 'Todo'){
+            localStorage.removeItem('todoData')
+        }
+        if(selectedCard.status === 'Pending'){
+            localStorage.removeItem('pendingData')
+        }
+         
 
     }
     
