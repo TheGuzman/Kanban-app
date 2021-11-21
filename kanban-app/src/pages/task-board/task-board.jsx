@@ -115,6 +115,7 @@ function TaskBoard() {
     return (
         <React.Fragment>
             <SubHeader></SubHeader>
+            <p>Prueba</p>
             <div className='columns__container'>
                 {arr.map((e, i) => <Column key={i} title={e.title} status={e.status} clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter} taskNum={e.tasks.length} AddButton={e.AddButton} onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove} onTaskChangeForward={onTaskChangeForward} onTaskChangeBackwards={onTaskChangeBackwards} onClearAll={onClearAll}></Column>)}
             </div>
