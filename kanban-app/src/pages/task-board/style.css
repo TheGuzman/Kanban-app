@@ -1,6 +1,15 @@
 .columns__container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    
+    align-items: center;
 }
+
+
+@media (min-width: 768px){
+
+.columns__container{
+    flex-direction: row;
+    }
+}
+
