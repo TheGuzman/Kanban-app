@@ -1,7 +1,7 @@
 import './style.css'
 import TaskFilter from '../task-filter';
 
-function SubHeader(){
+function SubHeader(props){
     const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
@@ -13,7 +13,7 @@ function SubHeader(){
                     <p className="text__container-version">Version 1.0</p>
                     <p className="text__container-update"> Updated on {actualDate.getDate() } { monthNames[actualMonth]}</p>
                  </div>     
-                 <TaskFilter></TaskFilter>
+                 <TaskFilter onFilter={props.onFilter}></TaskFilter>
              </div>
 }
 
