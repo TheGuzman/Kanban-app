@@ -8,8 +8,6 @@ function TaskFilter(props){
                 console.log(coincidences)
         
                 props.onFilter(coincidences)}}/>
-     
-
     )
 }
 export default TaskFilter
