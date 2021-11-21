@@ -39,7 +39,7 @@ function Card(props) {
         draggedCard = {...updateCard}
         draggedCard.x = e.pageX;
         draggedCard.y = e.pageY;
-        if(draggedCard.x> updateCard.x /*&&draggedCard.x<window.innerWidth/2*/){
+        if(draggedCard.x> updateCard.x /*&&draggedCard.x<window.innerWidth/2)*/){
             updateCard=draggedCard;
             props.onTaskChangeForward(updateCard);
             }
@@ -50,14 +50,15 @@ function Card(props) {
         //         props.onTaskChangeForward(updateCard)
         // }
        
-        else if(draggedCard.x< updateCard.x){
+        else if(draggedCard.x < updateCard.x /*&&draggedCard.x>(window.innerWidth/2)*/){
             updateCard=draggedCard;
             props.onTaskChangeBackwards(updateCard)
         }
-    //     else if(draggedCard.x< updateCard.x && draggedCard.x<(window.innerWidth/2)){
-    //         updateCard=draggedCard;
-    //         updateCard.status='First';
-    //         props.onTaskChangeBackwards(updateCard)
+
+        // else if(draggedCard.x < updateCard.x && draggedCard.x< window.innerWidth/2){
+        //     updateCard=draggedCard;
+        //     updateCard.status='First';
+        //     props.onTaskChangeBackwards(updateCard)
     // }
 
     }

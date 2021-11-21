@@ -89,6 +89,14 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
         }
+        // else if (updateCard.status==='Last'){
+        //     let newTask = Object.assign({},updateCard);
+        //     newTask.status='Done';
+        //     arr[2].tasks.push(newTask); //push al array del Done
+        //     updateCard.status='Todo';
+        //     deleteTask(updateCard)
+        //     updateArr([...arr]);
+        // }
     }
 
     const onClearAll = clearDoneTasks => deleteAllTasks(clearDoneTasks)
@@ -108,6 +116,14 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
         }
+        // else if (updateCard.status==='First'){
+        //     let newTask = Object.assign({},updateCard);
+        //     newTask.status= 'Todo';
+        //     arr[0].tasks.push(newTask); //push al array del Done
+        //     updateCard.status='Done';
+        //     deleteTask(updateCard)
+        //     updateArr([...arr]);
+        // }
     }
 
   

@@ -6,6 +6,7 @@
     border-radius: 8px;
     min-height: 70vh;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 200px;
     width: 90%;
     background-color: #f6f8fa;
@@ -49,11 +50,3 @@
         width: 100%;
         }
     }
-
-
-/* @media (min-width: 768px){
-
-.column{
-    width: 100%;
-    }
-} */
