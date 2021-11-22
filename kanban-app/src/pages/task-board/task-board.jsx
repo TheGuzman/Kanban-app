@@ -123,6 +123,7 @@ function TaskBoard() {
             arr[0].tasks.push(newTask); //push al array del Todo
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
         else if (updateCard.status==='Done'){
             let newTask = Object.assign({},updateCard);
@@ -130,6 +131,7 @@ function TaskBoard() {
             arr[1].tasks.push(newTask); //push al array del Pending
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
     }
 
