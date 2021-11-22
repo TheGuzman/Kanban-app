@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import SubHeader from "../../components/sub-header";
 import './style.css'
 import Column from '../../components/column/column'
@@ -11,6 +11,18 @@ function TaskBoard() {
     let arrTaskTodo = [];
     let arrTaskPending = [];
     let arrTaskDone = [];
+
+    useEffect(()=>{
+
+        const storageData = JSON.parse(localStorage.getItem('allData'));
+        if(storageData !=null){
+            updateArr(storageData)
+        }
+       
+
+    }, [])
+    
+    
 
     const arrColumns = [
         {
@@ -56,6 +68,7 @@ function TaskBoard() {
     function deleteAllTasks(array) {
         array.forEach(e => array.splice(e))
         updateArr([...arr]);
+        localStorage.setItem('allData', JSON.stringify(arr))
     }
 
 
@@ -63,14 +76,22 @@ function TaskBoard() {
     const onTaskAdd = newtask => {
         const column = arr.find(c => c.status === newtask.status);
         column.tasks.push(newtask);
+        
         updateArr([...arr]); //update del board
         updateCounter(counter => counter + 1);
+        console.log(arr[0].tasks)
+        localStorage.setItem('allData', JSON.stringify(arr));
+       
+        
 
     }
 
     const onTaskRemove = selectedCard => {
         deleteTask(selectedCard)
         updateArr([...arr])
+    
+        localStorage.setItem('allData', JSON.stringify(arr))
+         
 
     }
 
@@ -81,6 +102,7 @@ function TaskBoard() {
             arr[1].tasks.push(newTask); //push al array del Pending
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
         else if (updateCard.status === 'Pending') {
             let newTask = Object.assign({}, updateCard);
@@ -88,6 +110,7 @@ function TaskBoard() {
             arr[2].tasks.push(newTask); //push al array del Done
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
     }
 
@@ -100,6 +123,7 @@ function TaskBoard() {
             arr[0].tasks.push(newTask); //push al array del Todo
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
         else if (updateCard.status === 'Done') {
             let newTask = Object.assign({}, updateCard);
@@ -107,6 +131,7 @@ function TaskBoard() {
             arr[1].tasks.push(newTask); //push al array del Pending
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
     }
 
