@@ -54,7 +54,8 @@ function TaskBoard() {
 
 
     let [arr, updateArr] = useState(arrColumns)
-    let [counter, updateCounter] = useState(0)
+    let taskNum = JSON.parse(localStorage.getItem('counter'))
+    let [counter, updateCounter] = useState(taskNum!==null?JSON.parse(localStorage.getItem('counter'))+1:1)
     // let [stateChange, setStateChange] = useState([])
 
 
@@ -69,6 +70,7 @@ function TaskBoard() {
         array.forEach(e => array.splice(e))
         updateArr([...arr]);
         localStorage.setItem('allData', JSON.stringify(arr))
+        
     }
 
 
@@ -81,6 +83,7 @@ function TaskBoard() {
         updateCounter(counter => counter + 1);
         console.log(arr[0].tasks)
         localStorage.setItem('allData', JSON.stringify(arr));
+        localStorage.setItem('counter', JSON.stringify(counter))
        
         
 
@@ -91,6 +94,7 @@ function TaskBoard() {
         updateArr([...arr])
     
         localStorage.setItem('allData', JSON.stringify(arr))
+        localStorage.setItem('counter', JSON.stringify(counter))
          
 
     }
@@ -103,6 +107,7 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
             localStorage.setItem('allData', JSON.stringify(arr))
+            localStorage.setItem('counter', JSON.stringify(counter))
         }
         else if (updateCard.status === 'Pending') {
             let newTask = Object.assign({}, updateCard);
@@ -111,6 +116,7 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
             localStorage.setItem('allData', JSON.stringify(arr))
+            localStorage.setItem('counter', JSON.stringify(counter))
         }
     }
 
@@ -124,6 +130,7 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
             localStorage.setItem('allData', JSON.stringify(arr))
+            localStorage.setItem('counter', JSON.stringify(counter))
         }
         else if (updateCard.status === 'Done') {
             let newTask = Object.assign({}, updateCard);
@@ -132,6 +139,7 @@ function TaskBoard() {
             deleteTask(updateCard)
             updateArr([...arr]);
             localStorage.setItem('allData', JSON.stringify(arr))
+            localStorage.setItem('counter', JSON.stringify(counter))
         }
     }
 

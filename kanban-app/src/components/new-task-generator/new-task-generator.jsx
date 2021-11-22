@@ -36,7 +36,7 @@ function NewTaskGenerator(props) {
     function handleAdd() {
         let newtask = {
             task: info,
-            id: `#${counter+1}`,
+            id: `#${counter}`,
             status: props.status,
             date: getTime(),
         }
