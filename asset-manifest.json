@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Kanban-app/static/css/main.886b32f5.chunk.css",
-    "main.js": "/Kanban-app/static/js/main.99e8c64c.chunk.js",
-    "main.js.map": "/Kanban-app/static/js/main.99e8c64c.chunk.js.map",
+    "main.css": "/Kanban-app/static/css/main.86248091.chunk.css",
+    "main.js": "/Kanban-app/static/js/main.cd0c2086.chunk.js",
+    "main.js.map": "/Kanban-app/static/js/main.cd0c2086.chunk.js.map",
     "runtime-main.js": "/Kanban-app/static/js/runtime-main.56e6a851.js",
     "runtime-main.js.map": "/Kanban-app/static/js/runtime-main.56e6a851.js.map",
     "static/js/2.584b57ed.chunk.js": "/Kanban-app/static/js/2.584b57ed.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.0dfb462c.chunk.js": "/Kanban-app/static/js/3.0dfb462c.chunk.js",
     "static/js/3.0dfb462c.chunk.js.map": "/Kanban-app/static/js/3.0dfb462c.chunk.js.map",
     "index.html": "/Kanban-app/index.html",
-    "static/css/main.886b32f5.chunk.css.map": "/Kanban-app/static/css/main.886b32f5.chunk.css.map",
+    "static/css/main.86248091.chunk.css.map": "/Kanban-app/static/css/main.86248091.chunk.css.map",
     "static/js/2.584b57ed.chunk.js.LICENSE.txt": "/Kanban-app/static/js/2.584b57ed.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.56e6a851.js",
     "static/js/2.584b57ed.chunk.js",
-    "static/css/main.886b32f5.chunk.css",
-    "static/js/main.99e8c64c.chunk.js"
+    "static/css/main.86248091.chunk.css",
+    "static/js/main.cd0c2086.chunk.js"
   ]
 }
