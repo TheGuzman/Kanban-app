@@ -15,7 +15,9 @@ function TaskBoard() {
     useEffect(()=>{
 
         const storageData = JSON.parse(localStorage.getItem('allData'));
-        updateArr(storageData)
+        if(storageData !=null){
+            updateArr(storageData)
+        }
        
 
     }, [])
@@ -66,6 +68,7 @@ function TaskBoard() {
     function deleteAllTasks(array){
         array.forEach(e=> array.splice(e))
         updateArr([...arr]);
+        localStorage.setItem('allData', JSON.stringify(arr))
     }
 
 
@@ -78,15 +81,7 @@ function TaskBoard() {
         updateCounter(counter => counter + 1);
         console.log(arr[0].tasks)
         localStorage.setItem('allData', JSON.stringify(arr));
-        if(newtask.status === 'Todo'){
-            localStorage.setItem('todoData', JSON.stringify(arr[0]))
-        }
-        if(newtask.status === 'Pending'){
-            localStorage.setItem('pendingData', JSON.stringify(arr[1]))
-        }
-        if(newtask.status === 'Done'){
-            localStorage.setItem('doneData', JSON.stringify(arr[2]))
-        }
+       
         
 
     }
@@ -94,12 +89,8 @@ function TaskBoard() {
     const onTaskRemove = selectedCard => {
         deleteTask(selectedCard)
         updateArr([...arr])
-        if(selectedCard.status === 'Todo'){
-            localStorage.removeItem('todoData')
-        }
-        if(selectedCard.status === 'Pending'){
-            localStorage.removeItem('pendingData')
-        }
+    
+        localStorage.setItem('allData', JSON.stringify(arr))
          
 
     }
@@ -111,6 +102,7 @@ function TaskBoard() {
             arr[1].tasks.push(newTask); //push al array del Pending
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
         else if (updateCard.status==='Pending'){
             let newTask = Object.assign({},updateCard);
@@ -118,6 +110,7 @@ function TaskBoard() {
             arr[2].tasks.push(newTask); //push al array del Done
             deleteTask(updateCard)
             updateArr([...arr]);
+            localStorage.setItem('allData', JSON.stringify(arr))
         }
     }
 
