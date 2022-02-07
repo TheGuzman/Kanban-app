@@ -17,6 +17,8 @@ function TaskBoard() {
         const storageData = JSON.parse(localStorage.getItem('allData'));
         if(storageData !=null){
             updateArr(storageData)
+            updateFilteredArr(storageData)
+
         }
        
 
@@ -54,6 +56,7 @@ function TaskBoard() {
 
 
     let [arr, updateArr] = useState(arrColumns)
+    let [filteredArr, updateFilteredArr] = useState([...arr])
     let taskNum = JSON.parse(localStorage.getItem('counter'))
     let [counter, updateCounter] = useState(taskNum!==null?JSON.parse(localStorage.getItem('counter'))+1:1)
     // let [stateChange, setStateChange] = useState([])
@@ -147,7 +150,12 @@ function TaskBoard() {
 
 
 const onFilter = coincidences => {
-    console.log(coincidences)
+    const filteredArray = arr.map(c => {
+        const column = {...c};
+        column.tasks = column.tasks.filter(t => t.task.toLowerCase().includes(coincidences))
+        return column;
+    })
+    updateFilteredArr(filteredArray)
 }
 
 
@@ -157,7 +165,7 @@ return (
         <SubHeader onFilter={onFilter}></SubHeader>
         <div className='columns__container'>
 
-            {arr.map((e, i) => <Column key={i} title={e.title} status={e.status}
+            {filteredArr.map((e, i) => <Column key={i} title={e.title} status={e.status}
                 clearAll={e.clearAll} tasks={e.tasks} doneClass={e.doneClass} counter={counter}
                 taskNum={e.tasks.length} AddButton={e.AddButton}
                 onTaskAdd={onTaskAdd} onTaskRemove={onTaskRemove} onTaskChangeForward={onTaskChangeForward}
